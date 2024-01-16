@@ -1,0 +1,93 @@
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://e7hk55klsw3w"]
+
+[ext_resource type="Texture2D" uid="uid://d06np7q8ookux" path="res://assets/ui/nes_ui.png" id="1_062mn"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6dt05"]
+texture = ExtResource("1_062mn")
+texture_margin_left = 2.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 5.0
+region_rect = Rect2(33, 0, 31, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k3174"]
+texture = ExtResource("1_062mn")
+texture_margin_left = 2.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 5.0
+region_rect = Rect2(33, 0, 31, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8bs0t"]
+texture = ExtResource("1_062mn")
+texture_margin_left = 2.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 5.0
+region_rect = Rect2(33, 0, 31, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mgdip"]
+texture = ExtResource("1_062mn")
+texture_margin_left = 2.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 5.0
+region_rect = Rect2(33, 0, 31, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0dowc"]
+texture = ExtResource("1_062mn")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 5.0
+region_rect = Rect2(32, 17, 32, 15)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gnqxq"]
+texture = ExtResource("1_062mn")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 6.0
+region_rect = Rect2(32, 32, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yygia"]
+texture = ExtResource("1_062mn")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 6.0
+region_rect = Rect2(32, 32, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_an7sb"]
+texture = ExtResource("1_062mn")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 6.0
+region_rect = Rect2(32, 32, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7bnan"]
+texture = ExtResource("1_062mn")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 6.0
+region_rect = Rect2(32, 32, 16, 16)
+
+[resource]
+Button/colors/font_color = Color(0.745098, 0.921569, 0.443137, 1)
+Button/font_sizes/font_size = 22
+Button/styles/disabled = SubResource("StyleBoxTexture_6dt05")
+Button/styles/focus = SubResource("StyleBoxTexture_k3174")
+Button/styles/hover = SubResource("StyleBoxTexture_8bs0t")
+Button/styles/normal = SubResource("StyleBoxTexture_mgdip")
+Button/styles/pressed = SubResource("StyleBoxTexture_0dowc")
+Label/colors/font_color = Color(0.745098, 0.921569, 0.443137, 1)
+Label/colors/font_outline_color = Color(0.0901961, 0.156863, 0.0313726, 1)
+Label/constants/outline_size = 8
+Label/font_sizes/font_size = 22
+UpButton/base_type = &"Button"
+UpButton/styles/disabled = SubResource("StyleBoxTexture_gnqxq")
+UpButton/styles/focus = SubResource("StyleBoxTexture_yygia")
+UpButton/styles/hover = SubResource("StyleBoxTexture_an7sb")
+UpButton/styles/normal = SubResource("StyleBoxTexture_7bnan")

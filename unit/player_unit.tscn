@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjxvdibthv0ig"]
+
+[ext_resource type="PackedScene" uid="uid://dinnxe1ttdhb6" path="res://unit/unit.tscn" id="1_y0atd"]
+[ext_resource type="Script" path="res://unit/PlayerUnit.gd" id="2_pojqx"]
+[ext_resource type="PackedScene" uid="uid://dnmcs3yfgmiyo" path="res://combat/player_projectile.tscn" id="3_fi8tc"]
+
+[node name="PlayerUnit" instance=ExtResource("1_y0atd")]
+script = ExtResource("2_pojqx")
+max_attack_range = 100
+
+[node name="Visuals" parent="." index="3" groups=["PlayerUnit"]]
+
+[node name="BulletSpawn" parent="Visuals" index="0"]
+position = Vector2(0, -9)
+
+[node name="ProjectileSpawnerComponent" parent="Visuals" index="1"]
+projectile = ExtResource("3_fi8tc")
+
+[node name="HurtboxComponent" parent="Visuals" index="3"]
+collision_layer = 4
+collision_mask = 4
+
+[node name="AcquireTargetComponent" parent="Visuals" index="4"]
+target_layer = Array[String](["EnemyUnit"])
+
+[node name="Shadow" parent="Visuals" index="10"]
+rotation = -1.5708
+
+[node name="Unit" parent="Visuals" index="12"]
+rotation = -1.5708
+
+[node name="Marker2D" type="Marker2D" parent="." index="4"]
+position = Vector2(0, -100)

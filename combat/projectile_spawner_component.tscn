@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://caammbl0rsp1l"]
+
+[ext_resource type="Script" path="res://combat/projectile_spawner_component.gd" id="1_w610e"]
+
+[node name="ProjectileSpawnerComponent" type="Node2D"]
+script = ExtResource("1_w610e")
+
+[node name="TimeBetweenBurstShots" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true

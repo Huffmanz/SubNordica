@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://boctck0gw4r35"]
+
+[ext_resource type="Script" path="res://player/cursor.gd" id="1_6quhg"]
+[ext_resource type="Texture2D" uid="uid://bta1hwcegjccr" path="res://assets/kenney_pixel-ui-pack/Spritesheet/UIpackSheet_transparent.png" id="1_cml8i"]
+
+[node name="Cursor" type="Node2D"]
+script = ExtResource("1_6quhg")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(9, -13)
+rotation = -2.05809
+texture = ExtResource("1_cml8i")
+region_enabled = true
+region_rect = Rect2(486, 342, 12, 16)

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://c0eyykp5y7i5r"]
+
+[ext_resource type="Texture2D" uid="uid://c5vwokijftaxb" path="res://assets/nes_water_tiles.png" id="1_yohe7"]
+
+[node name="Wreckage" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_yohe7")
+region_enabled = true
+region_rect = Rect2(64, 16, 16, 16)

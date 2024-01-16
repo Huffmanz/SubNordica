@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cldb5bvdurl4l"]
+
+[ext_resource type="Script" path="res://combat/acquire_target_component.gd" id="1_55k1f"]
+
+[node name="AcquireTargetComponent" type="Node2D"]
+script = ExtResource("1_55k1f")

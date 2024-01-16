@@ -1,0 +1,173 @@
+[gd_scene load_steps=25 format=3 uid="uid://dinnxe1ttdhb6"]
+
+[ext_resource type="Script" path="res://unit/Unit.gd" id="1_s1nb3"]
+[ext_resource type="Texture2D" uid="uid://37kwqra6wsqv" path="res://assets/kenney_tiny_battle/Tiles/tile_0103.png" id="2_spkia"]
+[ext_resource type="PackedScene" uid="uid://djmiqukr8m0j4" path="res://combat/health_component.tscn" id="3_m487a"]
+[ext_resource type="PackedScene" uid="uid://dd3bics86eqrk" path="res://combat/hurtbox_component.tscn" id="4_uyo72"]
+[ext_resource type="PackedScene" uid="uid://caammbl0rsp1l" path="res://combat/projectile_spawner_component.tscn" id="5_lb4k0"]
+[ext_resource type="PackedScene" uid="uid://cldb5bvdurl4l" path="res://combat/acquire_target_component.tscn" id="6_5yi8f"]
+[ext_resource type="Texture2D" uid="uid://dp0wc883mwxnu" path="res://assets/ui/AttackRange.png" id="6_inopl"]
+[ext_resource type="PackedScene" uid="uid://cwqsp38vtiu27" path="res://ui/health_bar.tscn" id="7_kmiju"]
+[ext_resource type="PackedScene" uid="uid://c6dv240101cue" path="res://vfx/damage_particles.tscn" id="9_obgtl"]
+[ext_resource type="PackedScene" uid="uid://docjuqbf1ueu1" path="res://combat/fire_component.tscn" id="10_lk17p"]
+[ext_resource type="Script" path="res://sfx/random_audio_player.gd" id="11_chchl"]
+[ext_resource type="AudioStream" uid="uid://didwhsv2agpf3" path="res://assets/audio/sfx/kenney_impact-sounds/Audio/impactWood_medium_000.ogg" id="12_0gwj5"]
+[ext_resource type="AudioStream" uid="uid://df0sa073bwymr" path="res://assets/audio/sfx/kenney_impact-sounds/Audio/impactWood_medium_001.ogg" id="13_xdh6i"]
+[ext_resource type="AudioStream" uid="uid://cy7kwebhcslte" path="res://assets/audio/sfx/kenney_impact-sounds/Audio/impactWood_medium_002.ogg" id="14_we55d"]
+[ext_resource type="AudioStream" uid="uid://cw0ctx4g0h0lx" path="res://assets/audio/sfx/kenney_impact-sounds/Audio/impactWood_medium_003.ogg" id="15_x878n"]
+[ext_resource type="AudioStream" uid="uid://cwsqi765tnpd2" path="res://assets/audio/sfx/kenney_impact-sounds/Audio/impactWood_medium_004.ogg" id="16_6vqko"]
+[ext_resource type="AudioStream" uid="uid://g8wi03ubqfx0" path="res://assets/audio/sfx/FreeSFX/Explosion/Retro Explosion Short 01.wav" id="17_mimqw"]
+[ext_resource type="AudioStream" uid="uid://pa2x07hesc25" path="res://assets/audio/sfx/FreeSFX/Explosion/Retro Explosion Short 15.wav" id="18_mhla6"]
+
+[sub_resource type="Animation" id="Animation_divdh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Unit:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_gaa42"]
+resource_name = "idle"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Unit:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_xy83j"]
+resource_name = "selected"
+length = 1.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Unit:self_modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1.5, 1.5, 1.5, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r7x2l"]
+_data = {
+"RESET": SubResource("Animation_divdh"),
+"idle": SubResource("Animation_gaa42"),
+"selected": SubResource("Animation_xy83j")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4mian"]
+size = Vector2(16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2db5o"]
+load_path = "res://.godot/imported/tile_0103.png-083494f0bf3d00f964d119b5a5d1717d.ctex"
+
+[node name="Unit" type="Path2D"]
+script = ExtResource("1_s1nb3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_r7x2l")
+}
+
+[node name="ShootTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="HealTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="Visuals" type="Node2D" parent="."]
+
+[node name="BulletSpawn" type="Marker2D" parent="Visuals"]
+rotation = 1.5708
+
+[node name="ProjectileSpawnerComponent" parent="Visuals" node_paths=PackedStringArray("spawn_location", "shoot_timer") instance=ExtResource("5_lb4k0")]
+rotation = 1.5708
+spawn_location = NodePath("../BulletSpawn")
+shoot_timer = NodePath("../../ShootTimer")
+
+[node name="HealthComponent" parent="Visuals" instance=ExtResource("3_m487a")]
+max_health = 100.0
+
+[node name="HurtboxComponent" parent="Visuals" node_paths=PackedStringArray("health_component", "damage_audio_player") instance=ExtResource("4_uyo72")]
+health_component = NodePath("../HealthComponent")
+damage_audio_player = NodePath("../../DamageAudioPlayer")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Visuals/HurtboxComponent"]
+shape = SubResource("RectangleShape2D_4mian")
+
+[node name="AcquireTargetComponent" parent="Visuals" instance=ExtResource("6_5yi8f")]
+
+[node name="HealthBar" parent="Visuals" node_paths=PackedStringArray("health_component") instance=ExtResource("7_kmiju")]
+z_index = 10
+offset_left = -16.0
+offset_top = -17.0
+offset_right = 16.0
+offset_bottom = -11.0
+health_component = NodePath("../HealthComponent")
+
+[node name="DamageParticles" parent="Visuals" instance=ExtResource("9_obgtl")]
+position = Vector2(0, 6)
+emitting = false
+
+[node name="DamageParticles2" parent="Visuals" instance=ExtResource("9_obgtl")]
+position = Vector2(4, -6)
+emitting = false
+
+[node name="DamageParticles3" parent="Visuals" instance=ExtResource("9_obgtl")]
+position = Vector2(-5, -1)
+emitting = false
+
+[node name="FireComponent" parent="Visuals" node_paths=PackedStringArray("health_component", "damage_particles") instance=ExtResource("10_lk17p")]
+health_component = NodePath("../HealthComponent")
+damage_particles = [NodePath("../DamageParticles"), NodePath("../DamageParticles2"), NodePath("../DamageParticles3")]
+
+[node name="Shadow" type="Sprite2D" parent="Visuals"]
+self_modulate = Color(0, 0, 0, 0.32549)
+position = Vector2(0, 3)
+rotation = 1.5708
+texture = SubResource("CompressedTexture2D_2db5o")
+
+[node name="RangeIndicator" type="Sprite2D" parent="Visuals"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.45098)
+z_index = 2
+texture = ExtResource("6_inopl")
+
+[node name="Unit" type="Sprite2D" parent="Visuals"]
+z_index = 3
+rotation = 1.5708
+texture = ExtResource("2_spkia")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+loop = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="PathFollow2D"]
+remote_path = NodePath("../../Visuals")
+update_rotation = false
+
+[node name="DamageAudioPlayer" type="AudioStreamPlayer" parent="."]
+script = ExtResource("11_chchl")
+streams = Array[AudioStream]([ExtResource("12_0gwj5"), ExtResource("13_xdh6i"), ExtResource("14_we55d"), ExtResource("15_x878n"), ExtResource("16_6vqko")])
+
+[node name="DeathAudioPlayer" type="AudioStreamPlayer" parent="."]
+script = ExtResource("11_chchl")
+streams = Array[AudioStream]([ExtResource("17_mimqw"), ExtResource("18_mhla6")])

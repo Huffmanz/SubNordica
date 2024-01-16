@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://tuk4ogf85dac"]
+
+[ext_resource type="PackedScene" uid="uid://dmqb1fxe7e8lp" path="res://ui/floating_text.tscn" id="1_krpa1"]
+
+[node name="RedFloatingText" instance=ExtResource("1_krpa1")]
