@@ -1,12 +1,48 @@
-[gd_scene load_steps=4 format=3 uid="uid://cjxvdibthv0ig"]
+[gd_scene load_steps=9 format=3 uid="uid://cjxvdibthv0ig"]
 
 [ext_resource type="PackedScene" uid="uid://dinnxe1ttdhb6" path="res://unit/unit.tscn" id="1_y0atd"]
 [ext_resource type="Script" path="res://unit/PlayerUnit.gd" id="2_pojqx"]
 [ext_resource type="PackedScene" uid="uid://dnmcs3yfgmiyo" path="res://combat/player_projectile.tscn" id="3_fi8tc"]
+[ext_resource type="Texture2D" uid="uid://mwhd7nom6wcq" path="res://assets/ships/nes_ships.png" id="4_5lqxb"]
 
-[node name="PlayerUnit" instance=ExtResource("1_y0atd")]
+[sub_resource type="AtlasTexture" id="AtlasTexture_k4skm"]
+atlas = ExtResource("4_5lqxb")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6aejf"]
+atlas = ExtResource("4_5lqxb")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5bi3c"]
+atlas = ExtResource("4_5lqxb")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jvobf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k4skm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6aejf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5bi3c")
+}],
+"loop": true,
+"name": &"move",
+"speed": 5.0
+}]
+
+[node name="PlayerUnit" node_paths=PackedStringArray("animated_sprite") instance=ExtResource("1_y0atd")]
 script = ExtResource("2_pojqx")
 max_attack_range = 100
+animated_sprite = NodePath("Visuals/AnimatedSprite2D")
 
 [node name="Visuals" parent="." index="3" groups=["PlayerUnit"]]
 
@@ -23,11 +59,22 @@ collision_mask = 4
 [node name="AcquireTargetComponent" parent="Visuals" index="4"]
 target_layer = Array[String](["EnemyUnit"])
 
+[node name="HealthBar" parent="Visuals" index="5"]
+offset_top = -23.0
+offset_bottom = -17.0
+
 [node name="Shadow" parent="Visuals" index="10"]
 rotation = -1.5708
 
 [node name="Unit" parent="Visuals" index="12"]
 rotation = -1.5708
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Visuals" index="13"]
+z_index = 3
+rotation = 3.14159
+sprite_frames = SubResource("SpriteFrames_jvobf")
+animation = &"move"
+autoplay = "default"
 
 [node name="Marker2D" type="Marker2D" parent="." index="4"]
 position = Vector2(0, -100)

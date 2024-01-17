@@ -14,6 +14,7 @@ signal heal_percent_updated(new_heal_percent: float)
 @export var move_speed := 1.0
 @export var crew := 5
 @export var max_attack_range: = 1000
+@export var animated_sprite: AnimatedSprite2D
 
 @onready var attack_range = max_attack_range
 @onready var heal_timer = $HealTimer
@@ -89,12 +90,13 @@ func follow_path(delta : float):
 		_path_follow.progress_ratio = 0.0
 		position = grid.calculate_map_position(cell)
 		curve.clear_points()
+		animated_sprite.play("default")
 		emit_signal("walk_finished")
 		
 func walk_along(path: PackedVector2Array) -> void:
 	if path.is_empty():
 		return
-	
+	animated_sprite.play("move")
 	curve.add_point(Vector2.ZERO)
 	for point in path:
 		curve.add_point(grid.calculate_map_position(point) - position)

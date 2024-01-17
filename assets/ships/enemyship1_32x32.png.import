@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2372jkrm37ye"
-path="res://.godot/imported/crosshair026.png-71426dda157371302194b7c1339a82c1.ctex"
+uid="uid://xca1s73vjukv"
+path="res://.godot/imported/enemyship1_32x32.png-1e31e484cb75a4a5297bfc7e8d8d7c5f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/crosshair026.png"
-dest_files=["res://.godot/imported/crosshair026.png-71426dda157371302194b7c1339a82c1.ctex"]
+source_file="res://assets/ships/enemyship1_32x32.png"
+dest_files=["res://.godot/imported/enemyship1_32x32.png-1e31e484cb75a4a5297bfc7e8d8d7c5f.ctex"]
 
 [params]
 

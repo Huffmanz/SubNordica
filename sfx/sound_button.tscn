@@ -1,0 +1,21 @@
+[gd_scene load_steps=9 format=3 uid="uid://ceq6v0ldrrgih"]
+
+[ext_resource type="Theme" uid="uid://e7hk55klsw3w" path="res://theme/theme.tres" id="1_dasph"]
+[ext_resource type="Script" path="res://ui/SoundButton.gd" id="1_r3qyx"]
+[ext_resource type="Script" path="res://sfx/random_audio_player.gd" id="2_7xte4"]
+[ext_resource type="AudioStream" uid="uid://d2elemdr40kni" path="res://assets/audio/sfx/kenney_interface-sounds/Audio/click_001.ogg" id="3_gig5g"]
+[ext_resource type="AudioStream" uid="uid://biux28nadfwhu" path="res://assets/audio/sfx/kenney_interface-sounds/Audio/click_002.ogg" id="4_5l1hr"]
+[ext_resource type="AudioStream" uid="uid://cj724ek764xd6" path="res://assets/audio/sfx/kenney_interface-sounds/Audio/click_003.ogg" id="5_rp7yn"]
+[ext_resource type="AudioStream" uid="uid://bc2qqlxgio8bu" path="res://assets/audio/sfx/kenney_interface-sounds/Audio/click_004.ogg" id="6_ryvpv"]
+[ext_resource type="AudioStream" uid="uid://13gjlb4kd6nj" path="res://assets/audio/sfx/kenney_interface-sounds/Audio/click_005.ogg" id="7_c4xu2"]
+
+[node name="SoundButton" type="Button"]
+offset_right = 8.0
+offset_bottom = 8.0
+theme = ExtResource("1_dasph")
+script = ExtResource("1_r3qyx")
+
+[node name="RandomAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"ui"
+script = ExtResource("2_7xte4")
+streams = Array[AudioStream]([ExtResource("3_gig5g"), ExtResource("4_5l1hr"), ExtResource("5_rp7yn"), ExtResource("6_ryvpv"), ExtResource("7_c4xu2")])
