@@ -1,6 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://ca286e578dumw"]
+[gd_scene load_steps=10 format=3 uid="uid://ca286e578dumw"]
 
 [ext_resource type="Script" path="res://gameboard/GameBoard.gd" id="1_8vp52"]
+[ext_resource type="PackedScene" uid="uid://c288bwefp07f0" path="res://sfx/random_audio_player.tscn" id="2_34q22"]
+[ext_resource type="AudioStream" uid="uid://dqj7kupewwk4h" path="res://assets/audio/sfx/kenney_interface-sounds/Audio/switch_001.ogg" id="3_socfl"]
+[ext_resource type="AudioStream" uid="uid://6gqshsbedwx2" path="res://assets/audio/sfx/kenney_interface-sounds/Audio/switch_002.ogg" id="4_ck5fg"]
+[ext_resource type="AudioStream" uid="uid://wn20tmyki8mi" path="res://assets/audio/sfx/kenney_interface-sounds/Audio/switch_003.ogg" id="5_430m1"]
+[ext_resource type="AudioStream" uid="uid://bllu25n6pqogr" path="res://assets/audio/sfx/kenney_interface-sounds/Audio/switch_004.ogg" id="6_npnd4"]
+[ext_resource type="AudioStream" uid="uid://c4svu6oh5cu1t" path="res://assets/audio/sfx/kenney_interface-sounds/Audio/switch_005.ogg" id="7_4pxdc"]
+[ext_resource type="AudioStream" uid="uid://dukhpjwy11mpq" path="res://assets/audio/sfx/kenney_interface-sounds/Audio/switch_006.ogg" id="8_i2mcr"]
+[ext_resource type="AudioStream" uid="uid://bg3fc41eyqu20" path="res://assets/audio/sfx/kenney_interface-sounds/Audio/switch_007.ogg" id="9_r6lnr"]
 
 [node name="GameBoard" type="Node2D"]
 script = ExtResource("1_8vp52")
+
+[node name="RandomAudioPlayer" parent="." instance=ExtResource("2_34q22")]
+streams = Array[AudioStream]([ExtResource("3_socfl"), ExtResource("4_ck5fg"), ExtResource("5_430m1"), ExtResource("6_npnd4"), ExtResource("7_4pxdc"), ExtResource("8_i2mcr"), ExtResource("9_r6lnr")])

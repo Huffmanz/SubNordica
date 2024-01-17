@@ -187,7 +187,7 @@ func _set_is_walking(value: bool) -> void:
 	
 func on_died():
 	Utils.instantiate_scene_on_world(wreckage, global_position)
-	for i in range(3):
+	for i in range(5):
 		Utils.instantiate_scene_on_world(explosion_scene, global_position + Vector2(randf_range(-8,8),randf_range(-8,8)))
 	death_audio_player.play_random()
 	await death_audio_player.finished

@@ -8,6 +8,7 @@ const DIRECTIONS = [Vector2.LEFT, Vector2.RIGHT, Vector2.UP, Vector2.DOWN]
 @onready var _unit_path: UnitPath = $UnitPath
 @onready var cursor: Cursor = $Cursor
 @onready var _unit_overlay = $UnitOverlay
+@onready var random_audio_player = $RandomAudioPlayer
 
 
 #key: cell value: unit
@@ -111,6 +112,7 @@ func _select_unit(cell: Vector2) -> void:
 		return
 
 	if !_units[cell]: return
+	random_audio_player.play_random()
 	_active_unit = _units[cell]
 	_active_unit.is_selected = true
 	_active_unit.range_updated.connect(_active_unit_range_updated)
