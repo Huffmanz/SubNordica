@@ -7,7 +7,7 @@ signal health_decreased
 
 @export var max_health: float = 10
 var current_health 
-
+var dead = false
 func _ready():
 	current_health = max_health
 
@@ -27,6 +27,8 @@ func get_health_percent():
 	return min(current_health / max_health, 1)
 	
 func check_death():
+	if dead: return
 	if current_health <= 0:
+		dead = true
 		died.emit()
-		queue_free()
+		

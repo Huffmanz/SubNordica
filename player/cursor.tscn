@@ -1,7 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://boctck0gw4r35"]
+[gd_scene load_steps=11 format=3 uid="uid://boctck0gw4r35"]
 
 [ext_resource type="Script" path="res://player/cursor.gd" id="1_6quhg"]
-[ext_resource type="Texture2D" uid="uid://bta1hwcegjccr" path="res://assets/kenney_pixel-ui-pack/Spritesheet/UIpackSheet_transparent.png" id="1_cml8i"]
+[ext_resource type="Texture2D" uid="uid://ciskq4jvgg0rr" path="res://assets/ui/cursor_32_32.png" id="2_xosgc"]
+[ext_resource type="PackedScene" uid="uid://c288bwefp07f0" path="res://sfx/random_audio_player.tscn" id="3_h6rls"]
+[ext_resource type="AudioStream" uid="uid://dqj7kupewwk4h" path="res://assets/audio/sfx/kenney_interface-sounds/Audio/switch_001.ogg" id="4_e8ei3"]
+[ext_resource type="AudioStream" uid="uid://6gqshsbedwx2" path="res://assets/audio/sfx/kenney_interface-sounds/Audio/switch_002.ogg" id="5_60chu"]
+[ext_resource type="AudioStream" uid="uid://wn20tmyki8mi" path="res://assets/audio/sfx/kenney_interface-sounds/Audio/switch_003.ogg" id="6_njhy2"]
+[ext_resource type="AudioStream" uid="uid://bllu25n6pqogr" path="res://assets/audio/sfx/kenney_interface-sounds/Audio/switch_004.ogg" id="7_6qkkg"]
+[ext_resource type="AudioStream" uid="uid://c4svu6oh5cu1t" path="res://assets/audio/sfx/kenney_interface-sounds/Audio/switch_005.ogg" id="8_qfvr8"]
+[ext_resource type="AudioStream" uid="uid://dukhpjwy11mpq" path="res://assets/audio/sfx/kenney_interface-sounds/Audio/switch_006.ogg" id="9_v87l7"]
+[ext_resource type="AudioStream" uid="uid://bg3fc41eyqu20" path="res://assets/audio/sfx/kenney_interface-sounds/Audio/switch_007.ogg" id="10_2dfrc"]
 
 [node name="Cursor" type="Node2D"]
 script = ExtResource("1_6quhg")
@@ -11,9 +19,7 @@ wait_time = 0.1
 one_shot = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(9, -13)
-rotation = -2.05809
-texture = ExtResource("1_cml8i")
-region_enabled = true
-region_rect = Rect2(486, 342, 12, 16)
+texture = ExtResource("2_xosgc")
+
+[node name="RandomAudioPlayer" parent="." instance=ExtResource("3_h6rls")]
+streams = Array[AudioStream]([ExtResource("4_e8ei3"), ExtResource("5_60chu"), ExtResource("6_njhy2"), ExtResource("7_6qkkg"), ExtResource("8_qfvr8"), ExtResource("9_v87l7"), ExtResource("10_2dfrc")])

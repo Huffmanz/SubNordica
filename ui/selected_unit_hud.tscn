@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://bynelpp7obmgv"]
+[gd_scene load_steps=11 format=3 uid="uid://bynelpp7obmgv"]
 
 [ext_resource type="Script" path="res://ui/selected_unit_hud.gd" id="1_0o2sa"]
 [ext_resource type="Texture2D" uid="uid://dt4o5rmjifdjy" path="res://assets/kenney_tiny_battle/Tiles/tile_0121.png" id="2_cmea3"]
 [ext_resource type="Theme" uid="uid://e7hk55klsw3w" path="res://theme/theme.tres" id="2_xmx1k"]
 [ext_resource type="Texture2D" uid="uid://d06np7q8ookux" path="res://assets/ui/nes_ui.png" id="4_8cobe"]
+[ext_resource type="PackedScene" uid="uid://ceq6v0ldrrgih" path="res://sfx/sound_button.tscn" id="4_wj0md"]
 
 [sub_resource type="Gradient" id="Gradient_vipvp"]
 offsets = PackedFloat32Array(1)
@@ -95,12 +96,10 @@ vertical_alignment = 1
 layout_mode = 2
 alignment = 1
 
-[node name="AddRangeButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/MoveRangeUpdate/HBoxContainer/MarginContainer2/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="AddRangeButton" parent="MarginContainer/VBoxContainer/HBoxContainer/MoveRangeUpdate/HBoxContainer/MarginContainer2/MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("4_wj0md")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
-theme = ExtResource("2_xmx1k")
-theme_type_variation = &"FlatButton"
 icon = SubResource("AtlasTexture_i4mvf")
 
 [node name="MaxRangeLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/MoveRangeUpdate/HBoxContainer/MarginContainer2/MarginContainer/HBoxContainer/VBoxContainer"]
@@ -110,7 +109,7 @@ text = "0	"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SubtractRangeButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/MoveRangeUpdate/HBoxContainer/MarginContainer2/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="SubtractRangeButton" parent="MarginContainer/VBoxContainer/HBoxContainer/MoveRangeUpdate/HBoxContainer/MarginContainer2/MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("4_wj0md")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
@@ -157,7 +156,7 @@ vertical_alignment = 1
 layout_mode = 2
 alignment = 1
 
-[node name="AddAttackButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/AttackUpdate/HBoxContainer/MarginContainer2/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="AddAttackButton" parent="MarginContainer/VBoxContainer/HBoxContainer/AttackUpdate/HBoxContainer/MarginContainer2/MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("4_wj0md")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
@@ -170,11 +169,10 @@ text = "0	"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SubtractAttackButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/AttackUpdate/HBoxContainer/MarginContainer2/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="SubtractAttackButton" parent="MarginContainer/VBoxContainer/HBoxContainer/AttackUpdate/HBoxContainer/MarginContainer2/MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("4_wj0md")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
-theme_override_font_sizes/font_size = 11
 icon = SubResource("AtlasTexture_qnodc")
 
 [node name="HealUpdate" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
@@ -217,7 +215,7 @@ vertical_alignment = 1
 layout_mode = 2
 alignment = 1
 
-[node name="AddHealButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/HealUpdate/HBoxContainer/MarginContainer2/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="AddHealButton" parent="MarginContainer/VBoxContainer/HBoxContainer/HealUpdate/HBoxContainer/MarginContainer2/MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("4_wj0md")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
@@ -230,11 +228,10 @@ text = "0	"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SubtractHealButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/HealUpdate/HBoxContainer/MarginContainer2/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="SubtractHealButton" parent="MarginContainer/VBoxContainer/HBoxContainer/HealUpdate/HBoxContainer/MarginContainer2/MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("4_wj0md")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
-theme_override_font_sizes/font_size = 11
 icon = SubResource("AtlasTexture_qnodc")
 
 [node name="TotalCrew" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
@@ -277,7 +274,7 @@ vertical_alignment = 1
 layout_mode = 2
 alignment = 1
 
-[node name="ResetCrew" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/TotalCrew/HBoxContainer/MarginContainer2/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="ResetCrew" parent="MarginContainer/VBoxContainer/HBoxContainer/TotalCrew/HBoxContainer/MarginContainer2/MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("4_wj0md")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2

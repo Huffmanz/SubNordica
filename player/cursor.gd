@@ -11,43 +11,28 @@ extends Node2D
 
 # Emitted when clicking on the currently hovered cell or when pressing "ui_accept".
 signal accept_pressed(cell)
-# Emitted when the cursor moved to a new cell.
 signal moved(new_cell)
 
-# Grid resource, giving the node access to the grid size, and more.
+
 @export var grid: Resource = preload("res://resources/grid_32.tres")
-# Time before the cursor can move again in seconds.
-# You can see how we use it in the unhandled input function below.
 @export var ui_cooldown := 0.1
-
-# Coordinates of the current cell the cursor is hovering.
-var cell := Vector2.ZERO : set = set_cell
-
-# We use the timer to have a cooldown on the cursor movement.
+@onready var random_audio_player = $RandomAudioPlayer
 @onready var _timer: Timer = $Timer
 
+var cell := Vector2.ZERO : set = set_cell
 
-# When the cursor enters the scene tree, we snap its position to the centre of the cell and we
-# initialise the timer with our ui_cooldown variable.
 func _ready() -> void:
 	_timer.wait_time = ui_cooldown
 	position = grid.calculate_map_position(cell)
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	# If the user moves the mouse, we capture that input and update the node's cell in priority.
 	if event is InputEventMouseMotion:
 		self.cell = grid.calculate_grid_coordinates(event.position)
-	# If we are already hovering the cell and click on it, or we press the enter key, the player
-	# wants to interact with that cell.
 	elif event.is_action_pressed("click") or event.is_action_pressed("ui_accept"):
-		#  In that case, we emit a signal to let another node handle that input. The game board will
-		#  have the responsibility of looking at the cell's content.
 		emit_signal("accept_pressed", cell)
 
-	# The code below is for the cursor's movement.
-	# The following lines make some preliminary checks to see whether the cursor should move or not
-	# if the user presses an arrow key.
+	
 	var should_move := event.is_pressed()
 	# If the player is pressing the key in this frame, we allow the cursor to move. If they keep the
 	# keypress down, we only want to move after the cooldown timer stops.
@@ -75,7 +60,8 @@ func _unhandled_input(event: InputEvent) -> void:
 func _draw() -> void:
 	# Rect2 is built from the position of the rectangle's top-left corner and its size. To draw the
 	# square around the cell, the start position needs to be `-grid.cell_size / 2`.
-	draw_rect(Rect2(-grid.cell_size / 2, grid.cell_size), Color.ALICE_BLUE, false, 2.0)
+	pass
+	#draw_rect(Rect2(-grid.cell_size / 2, grid.cell_size), Color.ALICE_BLUE, false, 2.0)
 
 
 # This function controls the cursor's current position.

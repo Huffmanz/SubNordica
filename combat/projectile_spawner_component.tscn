@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://caammbl0rsp1l"]
+[gd_scene load_steps=4 format=3 uid="uid://caammbl0rsp1l"]
 
 [ext_resource type="Script" path="res://combat/projectile_spawner_component.gd" id="1_w610e"]
+[ext_resource type="PackedScene" uid="uid://c288bwefp07f0" path="res://sfx/random_audio_player.tscn" id="2_u2a7d"]
+[ext_resource type="AudioStream" uid="uid://ffjtsktjiab7" path="res://assets/audio/sfx/FreeSFX/weapon/Retro Gun SingleShot 04.wav" id="3_2cbfp"]
 
 [node name="ProjectileSpawnerComponent" type="Node2D"]
 script = ExtResource("1_w610e")
@@ -8,3 +10,6 @@ script = ExtResource("1_w610e")
 [node name="TimeBetweenBurstShots" type="Timer" parent="."]
 wait_time = 0.1
 one_shot = true
+
+[node name="RandomAudioPlayer" parent="." instance=ExtResource("2_u2a7d")]
+streams = Array[AudioStream]([ExtResource("3_2cbfp")])

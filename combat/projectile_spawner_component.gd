@@ -9,6 +9,7 @@ signal shot
 
 @export var burst_count = 1
 
+@onready var random_audio_player = $RandomAudioPlayer
 
 @onready var time_between_burst_shots = $TimeBetweenBurstShots
 var shots_left
@@ -24,7 +25,8 @@ func _ready():
 func Shoot():
 	if shots_left <= 0:
 		return
-		
+	
+	random_audio_player.play_random()
 	shot.emit()
 	var projectile_instance = Utils.instantiate_scene_on_world(projectile, spawn_location.global_position)
 	projectile_instance.rotation = global_rotation	

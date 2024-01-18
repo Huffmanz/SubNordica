@@ -141,6 +141,7 @@ health_component = NodePath("../HealthComponent")
 damage_particles = [NodePath("../DamageParticles"), NodePath("../DamageParticles2"), NodePath("../DamageParticles3")]
 
 [node name="Shadow" type="Sprite2D" parent="Visuals"]
+visible = false
 self_modulate = Color(0, 0, 0, 0.32549)
 position = Vector2(0, 3)
 rotation = 1.5708
@@ -153,6 +154,7 @@ z_index = 2
 texture = ExtResource("6_inopl")
 
 [node name="Unit" type="Sprite2D" parent="Visuals"]
+visible = false
 z_index = 3
 rotation = 1.5708
 texture = ExtResource("2_spkia")
