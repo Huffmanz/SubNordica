@@ -53,7 +53,7 @@ projectile = ExtResource("2_5h02u")
 
 [node name="HurtboxComponent" parent="Visuals" index="3"]
 collision_layer = 16
-collision_mask = 16
+collision_mask = 48
 
 [node name="AcquireTargetComponent" parent="Visuals" index="4"]
 target_layer = Array[String](["PlayerUnit"])

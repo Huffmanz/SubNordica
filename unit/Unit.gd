@@ -9,7 +9,6 @@ signal attack_range_updated(new_attack_range: float)
 signal heal_percent_updated(new_heal_percent: float)
 
 @export var grid: Grid = preload("res://resources/grid_32.tres")
-@export var skin: Texture : set = set_skin
 @export var move_range := 0 : set = set_move_range
 @export var skin_offset := Vector2.ZERO : set = set_skin_offset
 @export var move_speed := 1.0
@@ -41,8 +40,6 @@ var _is_walking := false : set = _set_is_walking
 @onready var acquire_target_component = $Visuals/AcquireTargetComponent
 @onready var range_indicator = $Visuals/RangeIndicator
 @onready var health_component:HealthComponent = $Visuals/HealthComponent
-
-var floating_text_scene = preload("res://ui/floating_text.tscn")
 
 var current_target
 var base_range
@@ -117,13 +114,6 @@ func set_is_selected(value: bool) -> void:
 		_anim_player.play("idle")
 
 
-func set_skin(value: Texture) -> void:
-	skin = value
-	if not _sprite:
-		await ready
-	_sprite.texture = value
-
-
 func set_skin_offset(value: Vector2) -> void:
 	skin_offset = value
 	if not _sprite:
@@ -178,13 +168,9 @@ func on_heal_timer_timeout():
 	var heal_amount = health_component.max_health * current_heal_percent
 	if health_component.get_health_percent() == 1: return
 	health_component.heal(health_component.max_health * current_heal_percent)
-	var floating_text = Utils.instantiate_scene_on_world(floating_text_scene, global_position + (Vector2.UP * randf_range(2,20))+ (Vector2.RIGHT * randf_range(-8.0,8.0)))
-	var format_screen = "+%0.0f"
-	floating_text.start(format_screen % heal_amount)
 	
 func _set_is_walking(value: bool) -> void:
 	_is_walking = value
-	#set_process(_is_walking)
 	
 func on_died():
 	var grid_pos = grid.calculate_grid_coordinates(_path_follow.global_position)

@@ -8,11 +8,11 @@
 [ext_resource type="AudioStream" uid="uid://cw0ctx4g0h0lx" path="res://assets/audio/sfx/kenney_impact-sounds/Audio/impactWood_medium_003.ogg" id="6_kit7u"]
 [ext_resource type="AudioStream" uid="uid://cwsqi765tnpd2" path="res://assets/audio/sfx/kenney_impact-sounds/Audio/impactWood_medium_004.ogg" id="7_8ec7j"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ta7w8"]
-size = Vector2(80, 80)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n0uew"]
+size = Vector2(160, 160)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_36jvi"]
-size = Vector2(16, 16)
+size = Vector2(32, 32)
 
 [sub_resource type="Gradient" id="Gradient_dgto8"]
 offsets = PackedFloat32Array(1)
@@ -20,8 +20,8 @@ colors = PackedColorArray(0.745098, 0.921569, 0.443137, 0.501961)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_pgct4"]
 gradient = SubResource("Gradient_dgto8")
-width = 80
-height = 80
+width = 160
+height = 160
 
 [node name="FireComponent" type="Node2D"]
 script = ExtResource("1_mu2nf")
@@ -32,8 +32,8 @@ script = ExtResource("1_mu2nf")
 collision_layer = 32
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FireArea"]
-shape = SubResource("RectangleShape2D_ta7w8")
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="FireArea"]
+shape = SubResource("RectangleShape2D_n0uew")
 
 [node name="ReceiveFire" type="Area2D" parent="."]
 collision_layer = 0
