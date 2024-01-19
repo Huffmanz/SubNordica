@@ -54,15 +54,11 @@ func _reinitialize() -> void:
 		for y in tilemap.get_used_rect().size.y:
 			var tile_pos = Vector2i(x + tilemap.get_used_rect().position.x , y + tilemap.get_used_rect().position.y)
 			var tile_data = tilemap.get_cell_tile_data(0, tile_pos)
-			if tile_data == null or !tile_data.get_custom_data("walkable"):
+			if tile_data != null and !tile_data.get_custom_data("walkable"):
 				var tile_global_pos := to_global(tilemap.map_to_local(tile_pos))
 				var cell = grid.calculate_grid_coordinates(tile_global_pos)
 				_units[cell] = null
-		
 	
-	# loop over the node's children and filter them to find the units. 
-	# may want to use the node group feature instead to place your units
-	# anywhere in the scene tree.
 	for child in get_children():
 		var unit := child as Unit
 		if not unit:

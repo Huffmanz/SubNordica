@@ -1,6 +1,64 @@
-[gd_scene load_steps=2 format=3 uid="uid://c0eyykp5y7i5r"]
+[gd_scene load_steps=11 format=3 uid="uid://c0eyykp5y7i5r"]
 
 [ext_resource type="Texture2D" uid="uid://c5vwokijftaxb" path="res://assets/nes_water_tiles.png" id="1_yohe7"]
+[ext_resource type="Texture2D" uid="uid://b3hhcq6vqauam" path="res://assets/ships/shipremains32x32.png" id="2_3mq3t"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6qpn4"]
+atlas = ExtResource("2_3mq3t")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gs2or"]
+atlas = ExtResource("2_3mq3t")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2sdgn"]
+atlas = ExtResource("2_3mq3t")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wdlq8"]
+atlas = ExtResource("2_3mq3t")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e04e1"]
+atlas = ExtResource("2_3mq3t")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wqg1e"]
+atlas = ExtResource("2_3mq3t")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qs1he"]
+atlas = ExtResource("2_3mq3t")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6lrf7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6qpn4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gs2or")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2sdgn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wdlq8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e04e1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wqg1e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qs1he")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Wreckage" type="Node2D"]
 
@@ -8,3 +66,8 @@
 texture = ExtResource("1_yohe7")
 region_enabled = true
 region_rect = Rect2(64, 16, 16, 16)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6lrf7")
+frame = 6
+frame_progress = 1.0
