@@ -39,10 +39,12 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="EnemyUnit" node_paths=PackedStringArray("animated_sprite") instance=ExtResource("1_1sphx")]
+[node name="EnemyUnit" instance=ExtResource("1_1sphx")]
 script = ExtResource("2_2pwj1")
 process = false
-animated_sprite = NodePath("Visuals/AnimatedSprite2D")
+move_range = 1000
+move_speed = 50.0
+max_attack_range = 100
 
 [node name="Visuals" parent="." index="3" groups=["EnemyUnit"]]
 

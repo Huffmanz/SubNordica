@@ -3,13 +3,23 @@ extends Unit
 
 
 @export var process = false
+@onready var animated_sprite_2d = $Visuals/AnimatedSprite2D
 
 func _ready():
 	super._ready()
-	GameEvents.level_started.connect(on_level_started)
+	walk_started.connect(on_walk_started)
+	walk_finished.connect(on_walk_finished)
 	
+	GameEvents.level_started.connect(on_level_started)
+
 func on_level_started():
 	process = true
+
+func on_walk_started():
+	animated_sprite_2d.play("move")
+
+func on_walk_finished():
+	animated_sprite_2d.play("default")
 
 func _process(delta):
 	if Engine.is_editor_hint():

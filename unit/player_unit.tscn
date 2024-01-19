@@ -3,25 +3,25 @@
 [ext_resource type="PackedScene" uid="uid://dinnxe1ttdhb6" path="res://unit/unit.tscn" id="1_y0atd"]
 [ext_resource type="Script" path="res://unit/PlayerUnit.gd" id="2_pojqx"]
 [ext_resource type="PackedScene" uid="uid://dnmcs3yfgmiyo" path="res://combat/player_projectile.tscn" id="3_fi8tc"]
-[ext_resource type="Texture2D" uid="uid://mwhd7nom6wcq" path="res://assets/ships/nes_ships.png" id="4_5lqxb"]
+[ext_resource type="Texture2D" uid="uid://lepf8cbpr54b" path="res://assets/ships/playership32x32.png" id="4_6us88"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_k4skm"]
-atlas = ExtResource("4_5lqxb")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6aejf"]
-atlas = ExtResource("4_5lqxb")
+[sub_resource type="AtlasTexture" id="AtlasTexture_ymdku"]
+atlas = ExtResource("4_6us88")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5bi3c"]
-atlas = ExtResource("4_5lqxb")
+[sub_resource type="AtlasTexture" id="AtlasTexture_m3e3t"]
+atlas = ExtResource("4_6us88")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ulxlt"]
+atlas = ExtResource("4_6us88")
 region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_jvobf"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_e8je5"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_k4skm")
+"texture": SubResource("AtlasTexture_ymdku")
 }],
 "loop": true,
 "name": &"default",
@@ -29,20 +29,19 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6aejf")
+"texture": SubResource("AtlasTexture_m3e3t")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5bi3c")
+"texture": SubResource("AtlasTexture_ulxlt")
 }],
 "loop": true,
 "name": &"move",
 "speed": 5.0
 }]
 
-[node name="PlayerUnit" node_paths=PackedStringArray("animated_sprite") instance=ExtResource("1_y0atd")]
+[node name="PlayerUnit" instance=ExtResource("1_y0atd")]
 script = ExtResource("2_pojqx")
 max_attack_range = 100
-animated_sprite = NodePath("Visuals/AnimatedSprite2D")
 
 [node name="Visuals" parent="." index="3" groups=["PlayerUnit"]]
 
@@ -72,8 +71,7 @@ rotation = -1.5708
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Visuals" index="13"]
 z_index = 3
 rotation = 3.14159
-sprite_frames = SubResource("SpriteFrames_jvobf")
-animation = &"move"
+sprite_frames = SubResource("SpriteFrames_e8je5")
 autoplay = "default"
 
 [node name="Marker2D" type="Marker2D" parent="." index="4"]

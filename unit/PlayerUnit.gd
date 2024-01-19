@@ -1,6 +1,19 @@
 class_name PlayerUnit
 extends Unit
 
+@onready var animated_sprite_2d = $Visuals/AnimatedSprite2D
+
+func _ready():
+	super._ready()
+	walk_started.connect(on_walk_started)
+	walk_finished.connect(on_walk_finished)
+	
+func on_walk_started():
+	animated_sprite_2d.play("move")
+
+func on_walk_finished():
+	animated_sprite_2d.play("default")
+
 func on_subtract_range_pressed():
 	move_range -= 1
 	

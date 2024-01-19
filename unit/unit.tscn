@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dinnxe1ttdhb6"]
+[gd_scene load_steps=28 format=3 uid="uid://dinnxe1ttdhb6"]
 
 [ext_resource type="Script" path="res://unit/Unit.gd" id="1_s1nb3"]
 [ext_resource type="Texture2D" uid="uid://37kwqra6wsqv" path="res://assets/kenney_tiny_battle/Tiles/tile_0103.png" id="2_spkia"]
@@ -11,13 +11,16 @@
 [ext_resource type="PackedScene" uid="uid://c6dv240101cue" path="res://vfx/damage_particles.tscn" id="9_obgtl"]
 [ext_resource type="PackedScene" uid="uid://docjuqbf1ueu1" path="res://combat/fire_component.tscn" id="10_lk17p"]
 [ext_resource type="Script" path="res://sfx/random_audio_player.gd" id="11_chchl"]
-[ext_resource type="AudioStream" uid="uid://didwhsv2agpf3" path="res://assets/audio/sfx/kenney_impact-sounds/Audio/impactWood_medium_000.ogg" id="12_0gwj5"]
-[ext_resource type="AudioStream" uid="uid://df0sa073bwymr" path="res://assets/audio/sfx/kenney_impact-sounds/Audio/impactWood_medium_001.ogg" id="13_xdh6i"]
-[ext_resource type="AudioStream" uid="uid://cy7kwebhcslte" path="res://assets/audio/sfx/kenney_impact-sounds/Audio/impactWood_medium_002.ogg" id="14_we55d"]
-[ext_resource type="AudioStream" uid="uid://cw0ctx4g0h0lx" path="res://assets/audio/sfx/kenney_impact-sounds/Audio/impactWood_medium_003.ogg" id="15_x878n"]
-[ext_resource type="AudioStream" uid="uid://cwsqi765tnpd2" path="res://assets/audio/sfx/kenney_impact-sounds/Audio/impactWood_medium_004.ogg" id="16_6vqko"]
-[ext_resource type="AudioStream" uid="uid://g8wi03ubqfx0" path="res://assets/audio/sfx/FreeSFX/Explosion/Retro Explosion Short 01.wav" id="17_mimqw"]
-[ext_resource type="AudioStream" uid="uid://pa2x07hesc25" path="res://assets/audio/sfx/FreeSFX/Explosion/Retro Explosion Short 15.wav" id="18_mhla6"]
+[ext_resource type="AudioStream" uid="uid://cj4o74y6snpmd" path="res://assets/audio/sfx/Custom/hit_1.wav" id="12_6hswh"]
+[ext_resource type="AudioStream" uid="uid://y4jno14v4cpu" path="res://assets/audio/sfx/Custom/hit_2.wav" id="13_3jyrn"]
+[ext_resource type="AudioStream" uid="uid://dxon5bgolmgh3" path="res://assets/audio/sfx/Custom/hit_3.wav" id="14_ywpjw"]
+[ext_resource type="AudioStream" uid="uid://bkd667mef0tlx" path="res://assets/audio/sfx/Custom/hit_4.wav" id="15_typvq"]
+[ext_resource type="AudioStream" uid="uid://dgxjii84v5p22" path="res://assets/audio/sfx/Custom/hit_5.wav" id="16_gk73w"]
+[ext_resource type="AudioStream" uid="uid://d0re3jygemnjy" path="res://assets/audio/sfx/Custom/explosion_1.wav" id="17_7cy7l"]
+[ext_resource type="AudioStream" uid="uid://cth53yp62yi" path="res://assets/audio/sfx/Custom/explosion_2.wav" id="18_xgm3g"]
+[ext_resource type="AudioStream" uid="uid://istffnav1tb7" path="res://assets/audio/sfx/Custom/explosion_3.wav" id="19_0ustw"]
+[ext_resource type="AudioStream" uid="uid://8ufelpavf70o" path="res://assets/audio/sfx/Custom/explosion_4.wav" id="20_vhv7i"]
+[ext_resource type="AudioStream" uid="uid://b6o3r46fv4h3a" path="res://assets/audio/sfx/Custom/explosion_5.wav" id="21_6uooo"]
 
 [sub_resource type="Animation" id="Animation_divdh"]
 length = 0.001
@@ -168,8 +171,8 @@ update_rotation = false
 
 [node name="DamageAudioPlayer" type="AudioStreamPlayer" parent="."]
 script = ExtResource("11_chchl")
-streams = Array[AudioStream]([ExtResource("12_0gwj5"), ExtResource("13_xdh6i"), ExtResource("14_we55d"), ExtResource("15_x878n"), ExtResource("16_6vqko")])
+streams = Array[AudioStream]([ExtResource("12_6hswh"), ExtResource("13_3jyrn"), ExtResource("14_ywpjw"), ExtResource("15_typvq"), ExtResource("16_gk73w")])
 
 [node name="DeathAudioPlayer" type="AudioStreamPlayer" parent="."]
 script = ExtResource("11_chchl")
-streams = Array[AudioStream]([ExtResource("17_mimqw"), ExtResource("18_mhla6")])
+streams = Array[AudioStream]([ExtResource("17_7cy7l"), ExtResource("18_xgm3g"), ExtResource("19_0ustw"), ExtResource("20_vhv7i"), ExtResource("21_6uooo")])

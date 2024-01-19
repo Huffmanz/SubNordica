@@ -2,6 +2,7 @@
 class_name Unit
 extends Path2D
 
+signal walk_started
 signal walk_finished
 signal range_updated
 signal attack_range_updated(new_attack_range: float)
@@ -14,7 +15,6 @@ signal heal_percent_updated(new_heal_percent: float)
 @export var move_speed := 1.0
 @export var crew := 5
 @export var max_attack_range: = 1000
-@export var animated_sprite: AnimatedSprite2D
 
 @onready var attack_range = max_attack_range
 @onready var heal_timer = $HealTimer
@@ -90,18 +90,17 @@ func follow_path(delta : float):
 		_path_follow.progress_ratio = 0.0
 		position = grid.calculate_map_position(cell)
 		curve.clear_points()
-		animated_sprite.play("default")
 		emit_signal("walk_finished")
 		
 func walk_along(path: PackedVector2Array) -> void:
 	if path.is_empty():
 		return
-	animated_sprite.play("move")
 	curve.add_point(Vector2.ZERO)
 	for point in path:
 		curve.add_point(grid.calculate_map_position(point) - position)
 	cell = path[-1]
 	self._is_walking = true
+	walk_started.emit()
 
 
 func set_cell(value: Vector2) -> void:
@@ -188,9 +187,11 @@ func _set_is_walking(value: bool) -> void:
 	#set_process(_is_walking)
 	
 func on_died():
-	Utils.instantiate_scene_on_world(wreckage, global_position)
+	var grid_pos = grid.calculate_grid_coordinates(_path_follow.global_position)
+	var world_pos = grid.calculate_map_position(grid_pos)
+	Utils.instantiate_scene_on_world(wreckage, world_pos)
 	for i in range(5):
-		Utils.instantiate_scene_on_world(explosion_scene, global_position + Vector2(randf_range(-8,8),randf_range(-8,8)))
+		Utils.instantiate_scene_on_world(explosion_scene, world_pos + Vector2(randf_range(-8,8),randf_range(-8,8)))
 	death_audio_player.play_random()
 	await death_audio_player.finished
 	queue_free()

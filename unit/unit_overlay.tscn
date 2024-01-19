@@ -1,33 +1,20 @@
 [gd_scene load_steps=5 format=3 uid="uid://dseqc5dhuplyd"]
 
-[ext_resource type="Texture2D" uid="uid://c5vwokijftaxb" path="res://assets/nes_water_tiles.png" id="1_5k2tu"]
+[ext_resource type="Texture2D" uid="uid://xsg2u8v2twrb" path="res://assets/overlay.png" id="1_vc5lx"]
 [ext_resource type="Script" path="res://unit/unit_overlay.gd" id="1_x7iel"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vgakc"]
-texture = ExtResource("1_5k2tu")
-1:2/0 = 0
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fp0aa"]
+texture = ExtResource("1_vc5lx")
+texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
-1:0/0 = 0
-1:1/0 = 0
-2:1/0 = 0
-2:2/0 = 0
-2:3/0 = 0
-2:0/0 = 0
-0:1/0 = 0
-0:2/0 = 0
-0:3/0 = 0
-1:3/0 = 0
-3:0/0 = 0
-4:0/0 = 0
-3:1/0 = 0
-4:1/0 = 0
-3:2/0 = 0
 
-[sub_resource type="TileSet" id="TileSet_qirdc"]
-sources/0 = SubResource("TileSetAtlasSource_vgakc")
+[sub_resource type="TileSet" id="TileSet_wq45k"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_fp0aa")
 
 [node name="UnitOverlay" type="TileMap"]
 modulate = Color(0.75, 0.75, 0.75, 1)
-tile_set = SubResource("TileSet_qirdc")
+self_modulate = Color(1, 1, 1, 0.47451)
+tile_set = SubResource("TileSet_wq45k")
 format = 2
 script = ExtResource("1_x7iel")

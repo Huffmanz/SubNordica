@@ -16,7 +16,6 @@ signal moved(new_cell)
 
 @export var grid: Resource = preload("res://resources/grid_32.tres")
 @export var ui_cooldown := 0.1
-@onready var random_audio_player = $RandomAudioPlayer
 @onready var _timer: Timer = $Timer
 
 var cell := Vector2.ZERO : set = set_cell
