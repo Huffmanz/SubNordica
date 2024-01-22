@@ -1,0 +1,92 @@
+[gd_scene load_steps=13 format=3 uid="uid://ktb888kqhy3v"]
+
+[ext_resource type="Script" path="res://levels/main_menu.gd" id="1_myfk3"]
+[ext_resource type="PackedScene" uid="uid://c45qcxf1sjc2m" path="res://main.tscn" id="2_vvs16"]
+[ext_resource type="PackedScene" uid="uid://ceq6v0ldrrgih" path="res://sfx/sound_button.tscn" id="2_yxm8m"]
+[ext_resource type="PackedScene" uid="uid://cvl7imya5r6jr" path="res://levels/world.tscn" id="3_jmc3q"]
+[ext_resource type="PackedScene" uid="uid://5i5rumol4vra" path="res://levels/obstacles.tscn" id="4_1v2gk"]
+[ext_resource type="PackedScene" uid="uid://ca286e578dumw" path="res://player/game_board.tscn" id="5_cdt8g"]
+[ext_resource type="PackedScene" uid="uid://dseqc5dhuplyd" path="res://unit/unit_overlay.tscn" id="6_x86si"]
+[ext_resource type="PackedScene" uid="uid://nyn6dtkahy7t" path="res://player/unit_path.tscn" id="7_b7r1o"]
+[ext_resource type="PackedScene" uid="uid://cjxvdibthv0ig" path="res://unit/player_unit.tscn" id="8_2l52l"]
+[ext_resource type="PackedScene" uid="uid://tpti7gnta6gx" path="res://unit/enemy_unit.tscn" id="9_oj4il"]
+[ext_resource type="Theme" uid="uid://e7hk55klsw3w" path="res://theme/theme.tres" id="9_wqiab"]
+[ext_resource type="AudioStream" uid="uid://bxhih078tr7s1" path="res://assets/audio/music/Fields of Ice.wav" id="11_8limw"]
+
+[node name="MainMenu" type="CanvasLayer"]
+script = ExtResource("1_myfk3")
+first_level = ExtResource("2_vvs16")
+
+[node name="World" parent="." instance=ExtResource("3_jmc3q")]
+
+[node name="Obstacles" parent="." instance=ExtResource("4_1v2gk")]
+layer_0/tile_data = PackedInt32Array(262153, 65536, 2, 262154, 65536, 2, 262155, 65536, 2, 262156, 65536, 2, 262157, 65536, 2, 262158, 196608, 2, 327694, 131072, 3, 327693, 196608, 2, 327692, 65536, 2, 327691, 65536, 2, 327690, 65536, 2, 327689, 65536, 2, 327688, 65536, 2, 393224, 65536, 2, 458759, 65536, 3, 458758, 65536, 3, 458757, 65536, 3, 393221, 65536, 2, 327685, 262144, 3, 327686, 65536, 2, 327687, 65536, 2, 393223, 65536, 2, 393222, 65536, 2, 262152, 65536, 2, 393225, 65536, 2, 262151, 262144, 3, 327684, 0, 1, 393220, 262144, 3, 458756, 65536, 3, 196618, 65536, 1, 196619, 65536, 1, 196620, 65536, 1, 196621, 65536, 1, 458760, 65536, 3, 458761, 65536, 3, 458762, 65536, 3, 393226, 65536, 2, 393227, 65536, 2, 458763, 65536, 3, 458764, 131072, 3, 393228, 196608, 2, 196617, 65536, 1, 262150, 65536, 1, 196616, 65536, 1, 196615, 0, 1, 262149, 0, 1, 393219, 0, 1, 458755, 0, 3, 393229, 131072, 3, 196623, 131072, 1, 262159, 131072, 3, 196622, 65536, 1)
+
+[node name="GameBoard" parent="." node_paths=PackedStringArray("tilemap") instance=ExtResource("5_cdt8g")]
+tilemap = NodePath("../Obstacles")
+
+[node name="UnitOverlay" parent="GameBoard" instance=ExtResource("6_x86si")]
+
+[node name="UnitPath" parent="GameBoard" instance=ExtResource("7_b7r1o")]
+
+[node name="PlayerUnit" parent="GameBoard" instance=ExtResource("8_2l52l")]
+position = Vector2(242, 310)
+max_attack_range = 0
+
+[node name="PlayerUnit2" parent="GameBoard" instance=ExtResource("8_2l52l")]
+position = Vector2(349, 310)
+max_attack_range = 0
+
+[node name="PlayerUnit3" parent="GameBoard" instance=ExtResource("8_2l52l")]
+position = Vector2(459, 309)
+max_attack_range = 0
+
+[node name="EnemyUnit" parent="GameBoard" instance=ExtResource("9_oj4il")]
+position = Vector2(218, 68)
+move_range = 0
+max_attack_range = 0
+
+[node name="EnemyUnit2" parent="GameBoard" instance=ExtResource("9_oj4il")]
+position = Vector2(369, 69)
+move_range = 0
+max_attack_range = 0
+
+[node name="EnemyUnit3" parent="GameBoard" instance=ExtResource("9_oj4il")]
+position = Vector2(513, 70)
+move_range = 0
+max_attack_range = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("9_wqiab")
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Sub-Nordica"
+
+[node name="PlayButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("2_yxm8m")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Play"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_8limw")

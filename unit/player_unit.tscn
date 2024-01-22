@@ -62,17 +62,11 @@ target_layer = Array[String](["EnemyUnit"])
 offset_top = -23.0
 offset_bottom = -17.0
 
-[node name="Shadow" parent="Visuals" index="10"]
+[node name="Unit" parent="Visuals" index="11"]
 rotation = -1.5708
 
-[node name="Unit" parent="Visuals" index="12"]
-rotation = -1.5708
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Visuals" index="13"]
-z_index = 3
-rotation = 3.14159
+[node name="AnimatedSprite2D" parent="Visuals" index="12"]
 sprite_frames = SubResource("SpriteFrames_e8je5")
-autoplay = "default"
 
 [node name="Marker2D" type="Marker2D" parent="." index="4"]
 position = Vector2(0, -100)

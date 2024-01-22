@@ -40,6 +40,8 @@ func on_health_changed():
 	
 	if caught_fire:
 		fire_level = max(1, fire_level)
+	if fire_level > 0:
+		damage_timer.start()
 		
 	var count = 0
 	for particle: GPUParticles2D in damage_particles:

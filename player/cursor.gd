@@ -24,6 +24,9 @@ func _ready() -> void:
 	_timer.wait_time = ui_cooldown
 	position = grid.calculate_map_position(cell)
 
+func _process(delta):
+	if Engine.is_editor_hint(): return
+	cell = grid.calculate_grid_coordinates(get_global_mouse_position())
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:

@@ -10,7 +10,6 @@ signal heal_percent_updated(new_heal_percent: float)
 
 @export var grid: Grid = preload("res://resources/grid_32.tres")
 @export var move_range := 0 : set = set_move_range
-@export var skin_offset := Vector2.ZERO : set = set_skin_offset
 @export var move_speed := 1.0
 @export var crew := 5
 @export var max_attack_range: = 1000
@@ -33,7 +32,6 @@ var is_selected := false: set = set_is_selected
 
 var _is_walking := false : set = _set_is_walking
 
-@onready var _sprite: Sprite2D = $Visuals/Unit
 @onready var _anim_player: AnimationPlayer = $AnimationPlayer
 @onready var _path_follow: PathFollow2D = $PathFollow2D
 @onready var projectile_spawner_component = $Visuals/ProjectileSpawnerComponent
@@ -113,32 +111,26 @@ func set_is_selected(value: bool) -> void:
 	else:
 		_anim_player.play("idle")
 
-
-func set_skin_offset(value: Vector2) -> void:
-	skin_offset = value
-	if not _sprite:
-		await ready
-	_sprite.position = value
-	
 func set_move_range(value: int) -> void:
 	move_range = value
 	range_updated.emit()
 	
 func change_move_range(difference: int):
-	if crew_unassigned == 0 and difference > 0: return
-	if crew_unassigned == crew and difference < 0: return
-	
-	crew_unassigned =  clamp(crew_unassigned - difference, 0, crew)
+	difference = update_crew_unassigned(difference)
 	crew_assigned_movement = clamp(crew_assigned_movement + difference, 0, crew)
 	var value = clamp(move_range + difference, 0, crew_assigned_movement + crew_unassigned)
 	move_range = value
 	range_updated.emit()
-
-func change_attack_range(difference: int):
-	if crew_unassigned == 0 and difference > 0: return
-	if crew_unassigned == crew and difference < 0: return	
+	
+func update_crew_unassigned(difference: int) -> int:
+	if crew_unassigned == 0 and difference > 0: return 0
+	if crew_unassigned == crew and difference < 0: return 0	
 	
 	crew_unassigned =  clamp(crew_unassigned - difference, 0, crew)
+	return difference
+
+func change_attack_range(difference: int):
+	difference = update_crew_unassigned(difference)
 	crew_assigned_attack = clamp(crew_assigned_attack + difference, 0, crew)
 	var max_percent_increase = 1 + .25 * crew
 	var percent_increase = 1 + .25 * crew_assigned_attack
@@ -148,10 +140,7 @@ func change_attack_range(difference: int):
 	range_indicator.scale = Vector2(attack_range / 16.0,attack_range  / 16.0)
 	
 func change_heal_crew(difference: int):
-	if crew_unassigned == 0 and difference > 0: return
-	if crew_unassigned == crew and difference < 0: return
-	
-	crew_unassigned =  clamp(crew_unassigned - difference, 0, crew)
+	difference = update_crew_unassigned(difference)
 	crew_assigned_heal = clamp(crew_assigned_heal + difference, 0, crew)
 	if crew_assigned_heal == 0:
 		current_heal_percent = 0
