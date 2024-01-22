@@ -48,6 +48,7 @@ func on_died():
 	visible = false
 		
 func on_add_range_pressed():
+	if not selected_unit: return
 	selected_unit.change_move_range(1)
 	
 func on_subtract_range_pressed():

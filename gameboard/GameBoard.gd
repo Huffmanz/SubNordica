@@ -18,10 +18,10 @@ var _walkable_cells := []
 
 func _ready() -> void:
 	_reinitialize()
+	GameEvents.enemy_move_request.connect(on_enemy_move_request)
+	if not cursor: return	
 	cursor.accept_pressed.connect(on_cursor_accept_pressed)
 	cursor.moved.connect(on_cursor_moved)
-	GameEvents.enemy_move_request.connect(on_enemy_move_request)
-	
 func _unhandled_input(event: InputEvent) -> void:
 	if _active_unit and event.is_action_pressed("ui_cancel"):
 		_deselect_active_unit()

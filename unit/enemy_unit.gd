@@ -46,3 +46,7 @@ func _process(delta):
 		angle = clamp(angle, current_rotation - 100 * delta, current_rotation + 100 * delta)
 		projectile_spawner_component.global_rotation = angle
 	follow_path(delta)
+	
+func on_died():
+	GameEvents.enemy_unit_destroyed.emit()
+	super.on_died()

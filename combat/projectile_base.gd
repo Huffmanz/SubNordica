@@ -32,6 +32,5 @@ func on_hitbox_area_entered(area: Area2D):
 	animated_sprite_2d.queue_free()
 	Utils.instantiate_scene_on_world(explosion_effect_scene, global_position)
 	hit_audio_player.play_random()
-	GameEvents.add_screenshake.emit(1.0, .25)
 	await hit_audio_player.finished
 	queue_free()
