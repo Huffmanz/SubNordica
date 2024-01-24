@@ -7,7 +7,7 @@ extends Node2D
 var current_target
 
 func acquire_target(max_range: float) -> Vector2:
-	var targets : Array[Node]
+	var targets : Array[Node] = []
 	for i in target_layer:
 		targets += get_tree().get_nodes_in_group(i)
 

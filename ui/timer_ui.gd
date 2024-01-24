@@ -6,7 +6,7 @@ extends CanvasLayer
 func _ready():
 	timer.timeout.connect(on_timer_timeout)
 
-func _process(delta):
+func _process(_delta):
 	if timer == null:
 		return
 	time_label.text = format_seconds_to_string(timer.time_left)
