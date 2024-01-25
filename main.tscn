@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bynelpp7obmgv" path="res://ui/selected_unit_hud.tscn" id="10_uchaq"]
 [ext_resource type="PackedScene" uid="uid://b4cj70bm6xhep" path="res://ui/timer_ui.tscn" id="13_0lhqn"]
 [ext_resource type="PackedScene" uid="uid://b80f7nci01117" path="res://player/player_camera.tscn" id="13_b8rea"]
-[ext_resource type="AudioStream" uid="uid://bxhih078tr7s1" path="res://assets/audio/music/Fields of Ice.wav" id="14_fg1ed"]
+[ext_resource type="AudioStream" uid="uid://brd0pc8aedy25" path="res://assets/audio/music/custom/Viking_Theme.wav" id="13_ynkh2"]
 [ext_resource type="PackedScene" uid="uid://elgymphoslgd" path="res://levels/game_over.tscn" id="15_ctjnb"]
 
 [node name="Main" type="Node2D" node_paths=PackedStringArray("level_start_timer", "game_board")]
@@ -61,7 +61,7 @@ one_shot = true
 autostart = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("14_fg1ed")
+stream = ExtResource("13_ynkh2")
 volume_db = -15.965
 autoplay = true
 bus = &"music"

@@ -90,7 +90,7 @@ func follow_path(delta : float):
 func walk_along(path: PackedVector2Array) -> void:
 	if path.is_empty():
 		return
-	curve.add_point(Vector2.ZERO)
+	#curve.add_point(Vector2.ZERO)
 	for point in path:
 		curve.add_point(grid.calculate_map_position(point) - position)
 	cell = path[-1]
@@ -154,7 +154,6 @@ func change_heal_crew(difference: int):
 	heal_timer.start()
 	
 func on_heal_timer_timeout():
-	var heal_amount = health_component.max_health * current_heal_percent
 	if health_component.get_health_percent() == 1: return
 	health_component.heal(health_component.max_health * current_heal_percent)
 	

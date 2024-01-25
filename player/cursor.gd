@@ -1,7 +1,3 @@
-# Player-controlled cursor. Allows them to navigate the game grid, select units, and move them.
-# Supports both keyboard and mouse (or touch) input.
-# The `tool` mode allows us to preview the drawing code you'll see below in the editor.
-@tool
 class_name Cursor
 extends Node2D
 
@@ -24,8 +20,7 @@ func _ready() -> void:
 	_timer.wait_time = ui_cooldown
 	position = grid.calculate_map_position(cell)
 
-func _process(delta):
-	if Engine.is_editor_hint(): return
+func _process(_delta):
 	cell = grid.calculate_grid_coordinates(get_global_mouse_position())
 
 func _unhandled_input(event: InputEvent) -> void:

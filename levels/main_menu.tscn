@@ -11,7 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://cjxvdibthv0ig" path="res://unit/player_unit.tscn" id="8_2l52l"]
 [ext_resource type="PackedScene" uid="uid://tpti7gnta6gx" path="res://unit/enemy_unit.tscn" id="9_oj4il"]
 [ext_resource type="Theme" uid="uid://e7hk55klsw3w" path="res://theme/theme.tres" id="9_wqiab"]
-[ext_resource type="AudioStream" uid="uid://bxhih078tr7s1" path="res://assets/audio/music/Fields of Ice.wav" id="11_8limw"]
+[ext_resource type="PackedScene" uid="uid://boctck0gw4r35" path="res://player/cursor.tscn" id="10_ah466"]
+[ext_resource type="AudioStream" uid="uid://brd0pc8aedy25" path="res://assets/audio/music/custom/Viking_Theme.wav" id="12_cyqou"]
 
 [node name="MainMenu" type="CanvasLayer"]
 script = ExtResource("1_myfk3")
@@ -56,6 +57,9 @@ position = Vector2(513, 70)
 move_range = 0
 max_attack_range = 0
 
+[node name="Cursor" parent="GameBoard" instance=ExtResource("10_ah466")]
+visible = false
+
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
@@ -89,4 +93,6 @@ size_flags_vertical = 4
 text = "Play"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("11_8limw")
+stream = ExtResource("12_cyqou")
+autoplay = true
+bus = &"music"

@@ -27,7 +27,7 @@ func _process(delta):
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	queue_free()
 	
-func on_hitbox_area_entered(area: Area2D):
+func on_hitbox_area_entered(_area: Area2D):
 	hitbox_component.queue_free()
 	animated_sprite_2d.queue_free()
 	Utils.instantiate_scene_on_world(explosion_effect_scene, global_position)

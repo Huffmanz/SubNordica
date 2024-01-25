@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://elgymphoslgd"]
+[gd_scene load_steps=7 format=3 uid="uid://elgymphoslgd"]
 
-[ext_resource type="Script" path="res://levels/game_over.gd" id="1_3tf7x"]
 [ext_resource type="Theme" uid="uid://e7hk55klsw3w" path="res://theme/theme.tres" id="1_bmimo"]
+[ext_resource type="Script" path="res://levels/game_over.gd" id="1_bur22"]
 [ext_resource type="PackedScene" uid="uid://ceq6v0ldrrgih" path="res://sfx/sound_button.tscn" id="2_2d5a5"]
+[ext_resource type="AudioStream" uid="uid://bmhu0xpdpve6" path="res://assets/audio/music/custom/Viking_Dead.wav" id="4_xraav"]
 
 [sub_resource type="Gradient" id="Gradient_rumnd"]
 offsets = PackedFloat32Array(1)
@@ -13,7 +14,6 @@ gradient = SubResource("Gradient_rumnd")
 
 [node name="GameOver" type="CanvasLayer"]
 process_mode = 3
-script = ExtResource("1_3tf7x")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 self_modulate = Color(0.0901961, 0.156863, 0.0313726, 0.254902)
@@ -63,3 +63,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Main Menu"
+
+[node name="GameOverPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_xraav")
+bus = &"sfx"
