@@ -1,6 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://ktb888kqhy3v"]
 
 [ext_resource type="Script" path="res://levels/main_menu.gd" id="1_myfk3"]
+[ext_resource type="PackedScene" uid="uid://djvy3crd533mk" path="res://levels/Level 2/Level 2.tscn" id="2_bl7mu"]
 [ext_resource type="PackedScene" uid="uid://ceq6v0ldrrgih" path="res://sfx/sound_button.tscn" id="2_yxm8m"]
 [ext_resource type="PackedScene" uid="uid://cvl7imya5r6jr" path="res://levels/world.tscn" id="3_jmc3q"]
 [ext_resource type="PackedScene" uid="uid://5i5rumol4vra" path="res://levels/obstacles.tscn" id="4_1v2gk"]
@@ -15,6 +16,7 @@
 
 [node name="MainMenu" type="CanvasLayer"]
 script = ExtResource("1_myfk3")
+first_level = ExtResource("2_bl7mu")
 
 [node name="World" parent="." instance=ExtResource("3_jmc3q")]
 

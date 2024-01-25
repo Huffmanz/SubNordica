@@ -14,7 +14,6 @@ gradient = SubResource("Gradient_rumnd")
 
 [node name="GameOver" type="CanvasLayer"]
 process_mode = 3
-script = ExtResource("1_bur22")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 self_modulate = Color(0.0901961, 0.156863, 0.0313726, 0.254902)
